@@ -1,7 +1,7 @@
 ﻿@page
 @model cristyan_resende_DR4_TP2.Pages.SaveNoteModel
 @{
-    ViewData["Title"] = "Salvar Nota";
+    ViewData["Title"] = "Salvar e Ler Notas";
 }
 
 <h2>@ViewData["Title"]</h2>
@@ -19,4 +19,25 @@
 @if (!string.IsNullOrEmpty(Model.FilePath))
 {
     <p>Arquivo salvo com sucesso! <a href="@Model.FilePath" download>Baixar Nota</a></p>
+}
+
+@if (Model.Files.Count > 0)
+{
+    <h3>Arquivos Salvos:</h3>
+    <ul>
+        @foreach (var file in Model.Files)
+        {
+            <li>
+                <a asp-page="/SaveNote" asp-page-handler="View" asp-route-fileName="@file">
+                    @file
+                </a>
+            </li>
+        }
+    </ul>
+}
+
+@if (!string.IsNullOrEmpty(Model.FileContent))
+{
+    <h3>Conteúdo:</h3>
+    <pre>@Model.FileContent</pre>
 }
