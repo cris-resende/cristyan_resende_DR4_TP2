@@ -1,0 +1,17 @@
+﻿@page
+@model cristyan_resende_DR4_TP2.Pages.CityManager.CreateCityModel
+@{
+	ViewData["Title"] = "Cadastro de Cidades Turísticas";
+}
+<h2>@ViewData["Title"]</h2>
+
+<form method="post">
+    <label for="cityName">Nome da Cidade:</label>
+    <input type="text" id="cityName" name="CityName" />
+    <button type="submit">Cadastrar</button>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <p>@Model.Message</p>
+}
