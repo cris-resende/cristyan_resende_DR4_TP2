@@ -6,12 +6,26 @@
 <h2>@ViewData["Title"]</h2>
 
 <form method="post">
+    @if (!ModelState.IsValid && Model.City != null)
+    {
+        <div asp-validation-summary="All" class="text-danger"></div>
+    }
+
     <label for="cityName">Nome da Cidade:</label>
-    <input type="text" id="cityName" name="CityName" />
+    <input type="text" id="cityName" name="City.CityName" value="@Model.City?.CityName" />
+    @if (!ModelState.IsValid && Model.City != null)
+    {
+        <span asp-validation-for="City.CityName" class="text-danger"></span>
+    }
+
     <button type="submit">Cadastrar</button>
 </form>
 
 @if (!string.IsNullOrEmpty(Model.Message))
 {
     <p>@Model.Message</p>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
 }
