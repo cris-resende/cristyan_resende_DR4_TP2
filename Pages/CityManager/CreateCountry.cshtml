@@ -1,0 +1,33 @@
+﻿@page
+@model cristyan_resende_DR4_TP2.Pages.CityManager.CreateCountryModel
+@{
+	ViewData["Title"] = "Cadastrar País";
+}
+<h2>@ViewData["Title"]</h2>
+
+<form method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="CountryInput.CountryName">Nome do País:</label>
+        <input asp-for="CountryInput.CountryName" class="form-control" />
+        <span asp-validation-for="CountryInput.CountryName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CountryInput.CountryCode">Código do País:</label>
+        <input asp-for="CountryInput.CountryCode" class="form-control" />
+        <span asp-validation-for="CountryInput.CountryCode" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <p>@Model.Message</p>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
