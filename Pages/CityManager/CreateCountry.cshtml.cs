@@ -20,7 +20,7 @@ namespace cristyan_resende_DR4_TP2.Pages.CityManager
 
             [BindProperty]
             [Required(ErrorMessage = "O código do país é obrigatório.")]
-            [StringLength(3, ErrorMessage = "O código do país deve ter no máximo 3 caracteres.")]
+            [StringLength(2, MinimumLength =2, ErrorMessage = "O código do país deve ser exatamente 2 caracteres.")]
             public string CountryCode { get; set; }
         }
 
@@ -36,7 +36,6 @@ namespace cristyan_resende_DR4_TP2.Pages.CityManager
         {
             if (ModelState.IsValid)
             {
-                // Criando uma instância de Country com os dados do InputModel
                 var country = new Country
                 {
                     CountryName = CountryInput.CountryName,
