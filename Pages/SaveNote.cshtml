@@ -1,0 +1,22 @@
+﻿@page
+@model cristyan_resende_DR4_TP2.Pages.SaveNoteModel
+@{
+    ViewData["Title"] = "Salvar Nota";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label for="content">Conteúdo da Nota:</label>
+        <textarea asp-for="Note.Content" class="form-control" rows="5"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+</form>
+
+<p>@Model.Message</p>
+
+@if (!string.IsNullOrEmpty(Model.FilePath))
+{
+    <p>Arquivo salvo com sucesso! <a href="@Model.FilePath" download>Baixar Nota</a></p>
+}
